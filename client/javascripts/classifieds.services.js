@@ -1,14 +1,14 @@
 (function() {
   'use strict'
   //services only describe the http methods
-  angular.module('ClassifiedsApp')
+  angular.module('app')
     .service('ClassifiedsService', service)
   service.$inject = ['$http']
 
   function service($http) {
-    this.getBlog = function() {
-      return $http.get('/api/posts').then(function(response) {
-      //  console.log("JUST A GET REQUEST: ", response);
+    this.getList = function() {
+      return $http.get('/api/classifieds').then(function(response) {
+       console.log("JUST A GET REQUEST: ", response);
         return response.data
       })
     }

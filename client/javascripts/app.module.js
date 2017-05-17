@@ -1,6 +1,6 @@
 (function() {
   'use strict'
 
-  angular.module('ClassifiedsApp', ['ui.router'])
+  angular.module('app', ['ui.router'])
 
 }());

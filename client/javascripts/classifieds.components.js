@@ -1,33 +1,22 @@
 (function() {
   'use strict'
 
-  angular.module('ClassifiedsApp')
+  angular.module('app')
     .component('classifieds', {
       controller: controller,
-      templateUrl: '../views/classifieds/layout.html'
+      templateUrl: '../views/classifieds/index.html'
     })
 
   controller.$inject = ['ClassifiedsService', '$state']
 
   function controller(ClassifiedsService, $state) {
     const vm = this;
-  //  console.log("VM", vm);
-    vm.time = new Date();
-    vm.toggleForm = toggleForm
-
-    function toggleForm() {
-      vm.formVisible = !vm.formVisible
-      vm.formNotVisible = !vm.formNotVisible
-    };
 
     vm.$onInit = function() {
-      vm.formVisible = false
-      vm.formNotVisible = true
 
-      blogService.getBlog().then(function(data) {
-      //  console.log("DATA", data);
-        vm.blogDb = data
-      //  console.log("BLOGDB", vm.blogDb);
+      ClassifiedsService.getList().then(function(data) {
+        vm.ClassifiedsDb = data
+
       });
     }
 
@@ -96,7 +85,7 @@
       })
     }
 
-    console.log("you made it here on your journey line 98");
+    console.log("you made it here on your journey line 88");
 
     // vm.editPost = function (posts) {
     //   console.log("state", $state)
