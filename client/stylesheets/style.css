@@ -1,7 +1,67 @@
+body {
+  font-family: "Whitney Cond A", "Whitney Cond B","Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+  font-weight: 100;
+  color: black;
+}
 img {
   width: 100%;
+  opacity: 0.7;
 }
 
-#add-pirate {
-  margin: 20px;
+h1 {
+  font-family: "Whitney Cond A", "Whitney Cond B","Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+  font-weight: 700;
+  display: block;
+  color: white;
+}
+
+label {
+  font-family: "Whitney Cond A", "Whitney Cond B","Lato", "Lucida Grande", "Lucida Sans Unicode", Tahoma, Sans-Serif;
+  font-weight: 100;
+  display: block;
+  color: white;
+}
+img:hover {
+    opacity: 1.0;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+.color-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(32,26,22,.7);
+  z-index: 99;
+}
+
+.tinted-image {
+  background:
+    /* top, transparent red, faked with gradient */
+    linear-gradient(
+      rgba(131, 31, 42, 0.6),
+      rgba(131, 31, 42, 0.6)
+    ),
+    /* bottom, image */
+    url('https://s14-eu5.ixquick.com/cgi-bin/serveimage?url=https:%2F%2Fstatic1.squarespace.com%2Fstatic%2F5733775560b5e9509bccbc1d%2Ft%2F5738d3b386db434ac62a7c54%2F1463342004947%2Fclassifieds.jpg%3Fformat%3D1500w&sp=c8d1c14c76283866237141edf7d54393');
+}
+/* unvisited link */
+a:link {
+    color: rgba(131, 31, 42, 1);
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: rgba(131, 31, 42, 1);
+}
+
+/* mouse over link */
+a:hover {
+  color: rgba(131, 31, 42, 1);
+}
+
+/* selected link */
+a:active {
+    color: hotpink;
 }

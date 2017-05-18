@@ -5,8 +5,8 @@
       <li role="presentation" class="active">
         <input type="search" class="form-control input-sm search-form" placeholder="Filter" ng-model="$ctrl.searchText">
       </li>
-      <div class="form-inline">
-        <!-- <label for="sort"> Sort by </label> -->
+      <div class="form-inline pull-right">
+        <label for="sort">Sort by </label>
         <select class="form-control" id="sort" ng-model="$ctrl.selectedOptionValue">
         <option value="created_at">Sort by Date</option>
         <option value="price">Sort by Price</option>
@@ -14,9 +14,6 @@
       </select>
       </div>
     </ul>
-    <div ng-repeat="ads in $ctrl.ClassifiedsDb | orderBy:$ctrl.selectedOptionValue:true | filter:$ctrl.searchText">
-
-    </div>
 
     <div class="panel panel-default" ng-repeat="ads in $ctrl.ClassifiedsDb | orderBy:$ctrl.selectedOptionValue:true | filter:$ctrl.searchText">
       <div class="panel-heading">{{ ads.title }}
