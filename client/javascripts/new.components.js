@@ -26,10 +26,11 @@
         price: vm.postObj.price,
         item_image: vm.postObj.item_image
       }
-      ClassifiedsService.sendForm(vm.postObj).then(function(data) {
+      console.log("TEMP OBJ", tempObj);
+      ClassifiedsService.sendForm(tempObj).then(function(data) {
          console.log("DATA after new ad is created", data);
 
-        vm.ClassifiedsDb.push(data)
+        //vm.ClassifiedsDb.push(data)
          console.log("new ad in DATA?", data);
         delete vm.postObj;
         $state.go('home')

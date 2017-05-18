@@ -37,7 +37,7 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-
+console.log("REQ BODY in routes", req.body);
   knex('classifieds')
     .insert({
       title: req.body.title,

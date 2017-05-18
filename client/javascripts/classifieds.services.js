@@ -17,9 +17,9 @@
         return response.data
       })
     }
-    this.sendForm = function(obj) {
+    this.sendForm = function(tempObj) {
       console.log("THIS HAPPENED in services");
-      return $http.post('/api/classifieds', obj).then(function(response) {
+      return $http.post('/api/classifieds', tempObj).then(function(response) {
        console.log("SUBMITTED FORM RESPONSE: ", response);
         return response.data
       })
