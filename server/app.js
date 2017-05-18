@@ -19,6 +19,7 @@ app.get('*', function(req, res) {
   res.sendFile('layout.html', {root: './client/views'});
 });
 
-app.listen(3000, function() {
+app.listen(process.env.PORT || 3000, function() {
+  console.log(process.env.PORT)
   console.log("Listening on port 3000...");
 });
