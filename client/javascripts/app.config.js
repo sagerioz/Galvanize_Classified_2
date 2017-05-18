@@ -7,7 +7,7 @@
 
   function config($stateProvider, $urlRouterProvider, $locationProvider){
 
-    // this line is optional
+    // this line is optional, removes the # from the url path
     $locationProvider.html5Mode(true)
 
     $stateProvider
