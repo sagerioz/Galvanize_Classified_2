@@ -4,7 +4,12 @@
   "main": "server/app.js",
   "license": "MIT",
   "scripts": {
+    "heroku-postbuild": "knex migrate:rollback; knex migrate:latest; knex seed:run;",
+    "knex": "knex",
+    "lint": "eslint  --ignore-pattern public/js/vendor",
+    "nf": "nf start",
     "start": "node server/app.js",
+    "nodemon": "node server/app.js",
     "test": "mocha"
   },
   "keywords": [],
@@ -22,5 +27,8 @@
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
     "supertest": "^2.0.1"
+  },
+  "engines":{
+   "node": "v7.7.2"
   }
 }

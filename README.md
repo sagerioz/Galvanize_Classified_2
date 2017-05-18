@@ -1,5 +1,8 @@
 # Galvanize Classified - Part 2
-
+/*"scripts": {
+  "start": "node server/app.js",
+  "test": "mocha"
+}*/
 ## Read the entire README before beginning. Commit often.
 
 ## Project Description
@@ -28,4 +31,3 @@ The app should do the following:
 - Delete an ad
 - Filter ads (titles and descriptions)
 - Sort ads based on posting date and price
-
