@@ -15,7 +15,7 @@ function notFound(res) {
 
 router.get('/', (req, res, next) => {
   knex('classifieds')
-    .select(['id', 'title', 'description', 'price', 'item_image'])
+    .select(['id', 'title', 'description', 'price', 'item_image', 'created_at'])
     .then((ads) => {
       res.setHeader('Content-Type', 'application/json')
       res.status(200);

@@ -18,6 +18,7 @@
     vm.$onInit = function() {
       ClassifiedsService.getList().then(function(data) {
         vm.ClassifiedsDb = data
+        console.log("DATA", data);
       });
     }
 

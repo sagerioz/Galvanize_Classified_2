@@ -1,34 +1,45 @@
 <div class="container">
-<h1>Here are the ads of stuff to buy</h1>
-<p><a class="btn btn-info" ui-sref="new">New Post</a>
-<div ng-repeat="ads in $ctrl.ClassifiedsDb">
+  <h1>Here are the ads of stuff to buy</h1>
+  <p><a class="btn btn-info" ui-sref="new">New Post</a>
+    <ul class="nav nav-pills">
+      <li role="presentation" class="active">
+        <input type="search" class="form-control input-sm search-form" placeholder="Filter" ng-model="$ctrl.searchText">
+      </li>
+      <div class="form-inline">
+        <!-- <label for="sort"> Sort by </label> -->
+        <select class="form-control" id="sort" ng-model="$ctrl.selectedOptionValue">
+        <option value="created_at">Sort by Date</option>
+        <option value="price">Sort by Price</option>
 
-
-
-</div>
-
-<div class="panel panel-default" ng-repeat="ads in $ctrl.ClassifiedsDb">
-  <div class="panel-heading">{{ ads.title }}
-
-
-
-    <span class="glyphicon glyphicon-remove pull-right" ng-click="$ctrl.deleteAd(ads)"></span>
-    <a ui-sref="edit({id: {{ads.id}}})">Edit</a>
-    <a href="/edit/{{ads.id}}">
-      <span class="glyphicon glyphicon-pencil pull-right"></span>
-    </a>
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-sm-4">
-        <img ng-src="{{ads.item_image}}" alt="">
+      </select>
       </div>
-      <div class="col-sm-8">
-        <h4>Price: ${{ ads.price }}</h4>
-        <p>Description: {{ ads.description }}</p>
-        <!-- <p>Accessory: {{ vm.pirate.accessory }}</p> -->
+    </ul>
+    <div ng-repeat="ads in $ctrl.ClassifiedsDb | orderBy:$ctrl.selectedOptionValue:true | filter:$ctrl.searchText">
+
+    </div>
+
+    <div class="panel panel-default" ng-repeat="ads in $ctrl.ClassifiedsDb | orderBy:$ctrl.selectedOptionValue:true | filter:$ctrl.searchText">
+      <div class="panel-heading">{{ ads.title }}
+
+
+
+        <span class="glyphicon glyphicon-remove pull-right" ng-click="$ctrl.deleteAd(ads)"></span>
+        <a ui-sref="edit({id: {{ads.id}}})">Edit</a>
+        <a href="/edit/{{ads.id}}">
+          <span class="glyphicon glyphicon-pencil pull-right"></span>
+        </a>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-sm-4">
+            <img ng-src="{{ads.item_image}}" alt="">
+          </div>
+          <div class="col-sm-8">
+            <h4>Price: ${{ ads.price }}</h4>
+            <p>Description: {{ ads.description }}</p>
+            <!-- <p>Accessory: {{ vm.pirate.accessory }}</p> -->
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 </div>
