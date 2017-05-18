@@ -16,11 +16,11 @@
         url: '/',
         component: 'classifieds'
       })
-    //  .state({
-    //     name: 'edit',
-    //     url: '/edit/:id',
-    //     component: 'classifieds_ad'
-    //  })
+     .state({
+        name: 'edit',
+        url: '/edit/:id',
+        component: 'classifiedsedit'
+     })
 
   }
 

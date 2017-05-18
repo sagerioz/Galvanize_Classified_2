@@ -1,6 +1,31 @@
-<h1>Here are all the ads</h1>
+<h1>Here are all the ads and stuff to buy</h1>
 <div ng-repeat="ads in $ctrl.ClassifiedsDb">
-{{ ads.title }}
 
 
+
+</div>
+
+<div class="panel panel-default" ng-repeat="ads in $ctrl.ClassifiedsDb">
+  <div class="panel-heading">{{ ads.title }}
+
+
+
+    <span class="glyphicon glyphicon-remove pull-right"></span>
+    <a ui-sref="edit({id: {{ads.id}}})">Edit</a>
+    <a href="/edit/{{ads.id}}">
+      <span class="glyphicon glyphicon-pencil pull-right"></span>
+    </a>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-4">
+        <img ng-src="{{ads.item_image}}" alt="">
+      </div>
+      <div class="col-sm-8">
+        <h4>Price: ${{ ads.price }}</h4>
+        <p>Description: {{ ads.description }}</p>
+        <!-- <p>Accessory: {{ vm.pirate.accessory }}</p> -->
+      </div>
+    </div>
+  </div>
 </div>

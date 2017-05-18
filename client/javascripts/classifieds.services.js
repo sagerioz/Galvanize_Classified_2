@@ -12,8 +12,8 @@
         return response.data
       })
     }
-    this.getPost = function(id){
-      return $http.get(`/api/posts/${id}`).then(function(response){
+    this.getAd = function(id){
+      return $http.get(`/api/classifieds/${id}`).then(function(response){
         return response.data
       })
     }
@@ -51,8 +51,8 @@
     }
     this.editPostService = function(posts) {
     //  console.log("THE ID", `/${posts.id}/comments`);
-      return $http.patch(`/api/posts/${posts.id}`, posts).then(function(response) {
-      //  console.log("ADDED COMMENT", response);
+      return $http.patch(`/api/classifieds/${posts.id}`, posts).then(function(response) {
+       console.log("ADDED an EDIt UPDATe", response);
         return response.data
       })
     }

@@ -1,0 +1,70 @@
+<!-- edit form -->
+<div class="container">
+<form name="$ctrl.editForm" novalidate class="form" ng-submit="$ctrl.editAd()" >
+
+       <!-- TITLE -->
+       <!-- <div class="form-group" ng-class="{ 'has-error' : $ctrl.editForm.title.$invalid && !$ctrl.editForm.title.$pristine }">
+           <label>Title</label>
+           <input type="text" name="title" class="form-control" ng-model="$ctrl.editObj.title" required>
+           <p ng-show="$ctrl.editForm.title.$invalid && !$ctrl.editForm.title.$pristine" class="help-block">Your title is required.</p>
+       </div> -->
+
+       <!-- TITLE -->
+       <div class="form-group" ng-class="{ 'has-error' : $ctrl.editForm.title.$invalid && !$ctrl.editForm.title.$pristine }">
+           <label>Title</label>
+           <input
+           name="title"
+           ng-model="$ctrl.editObj.title"
+           required
+           minlength="1"
+           type="text"
+           class="form-control"
+           id="title">
+           <p ng-show="$ctrl.editForm.title.$error.minlength" class="help-block">Title is required.</p>
+       </div>
+
+       <!-- DESCRIPTION -->
+       <div class="form-group" ng-class="{ 'has-error' : $ctrl.editForm.description.$invalid && !$ctrl.editForm.description.$pristine }">
+           <label>Description</label>
+           <textarea
+           name="description"
+           required
+           ng-model="$ctrl.editObj.description"
+           type="url"
+           class="form-control"
+           id="description">
+           <p ng-show="$ctrl.editForm.description.$invalid && !$ctrl.editForm.description.$pristine" class="help-block">Enter the item's description</p>
+       </div>
+
+      <!-- PRICE -->
+       <div class="form-group" ng-class="{ 'has-error' : $ctrl.editForm.price.$invalid && !$ctrl.editForm.price.$pristine }">
+           <label>Price</label>
+           <input
+           name="price"
+           required
+           ng-model="$ctrl.editObj.price"
+           type="text"
+           class="form-control"
+           id="price"></textarea>
+           <p ng-show="$ctrl.editForm.price.$invalid && !$ctrl.editForm.price.$pristine" class="help-block">Please enter the item's price</p>
+       </div>
+
+       <!-- ITEM image_url -->
+        <div class="form-group" ng-class="{ 'has-error' : $ctrl.editForm.item_image.$invalid && !$ctrl.editForm.item_image.$pristine }">
+            <label>Item Image</label>
+            <input
+            name="item_image"
+            required
+            ng-model="$ctrl.editObj.item_image"
+            type="text"
+            class="form-control"
+            id="item_image"></textarea>
+            <p ng-show="$ctrl.editForm.item_image.$invalid && !$ctrl.editForm.item_image.$pristine" class="help-block">Please enter the item'simage url</p>
+        </div>
+
+       <button type="submit" class="btn btn-primary">Update Ad</button>
+       <a ui-sref="home">Cancel</a>
+
+   </form>
+</div>
+<!-- end form -->
