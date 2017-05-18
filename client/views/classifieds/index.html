@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container color-overlay">
   <h1>Here are the ads of stuff to buy</h1>
   <p><a class="btn btn-info" ui-sref="new">New Post</a>
     <ul class="nav nav-pills">
@@ -21,7 +21,7 @@
 
 
         <span class="glyphicon glyphicon-remove pull-right" ng-click="$ctrl.deleteAd(ads)"></span>
-        <a ui-sref="edit({id: {{ads.id}}})">Edit</a>
+        <!-- <a ui-sref="edit({id: {{ads.id}}})">Edit</a> -->
         <a href="/edit/{{ads.id}}">
           <span class="glyphicon glyphicon-pencil pull-right"></span>
         </a>
