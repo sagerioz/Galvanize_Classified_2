@@ -21,6 +21,11 @@
         url: '/edit/:id',
         component: 'classifiedsedit'
      })
+     .state({
+        name: 'new',
+        url: '/new',
+        component: 'classifiedsnew'
+     })
 
   }
 

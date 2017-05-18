@@ -12,8 +12,12 @@
   function controller(ClassifiedsService, $state) {
     const vm = this;
 
-    vm.$onInit = function() {
+    vm.toggleForm = toggleForm
+    vm.deleteAd = deleteAd
 
+    vm.$onInit = function() {
+      vm.formVisible = false
+      vm.formNotVisible = true
       ClassifiedsService.getList().then(function(data) {
         vm.ClassifiedsDb = data
 
@@ -30,44 +34,49 @@
         created_at: moment().calendar()
       }
       blogService.sendForm(tempObj).then(function(data) {
-      //  console.log("DATA after new Form", data);
+        //  console.log("DATA after new Form", data);
         data.comments = []
         vm.blogDb.push(data)
-      //  console.log("COMMENTS in DATA?", data);
+        //  console.log("COMMENTS in DATA?", data);
         delete vm.postObj;
         vm.toggleForm()
       })
     }
-    vm.deletePosts = function(posts) {
-      if (confirm("are you sure you want to delete this post?") === true) {
-        blogService.deletePost(posts).then(function() {
-        console.log("you deleted me");
-        vm.$onInit()
+    function deleteAd(ads) {
+      if (confirm("are you sure you want to delete this ad?") === true) {
+        ClassifiedsService.deleteSingleAd(ads).then(function() {
+          console.log("you deleted me");
+          vm.$onInit()
         });
-          } else {
-          return;
-        }
+      } else {
+        return;
       }
-    //console.log("LINE 57");
+    }
+
+    function toggleForm() {
+      vm.formVisible = !vm.formVisible
+      vm.formNotVisible = !vm.formNotVisible
+    };
+
     vm.toggleComments = function(posts) {
       posts.commentsVisible = !posts.commentsVisible
     };
 
-    vm.countVotesUp = function (posts) {
-      blogService.countVotesUp(posts).then(function(data){
+    vm.countVotesUp = function(posts) {
+      blogService.countVotesUp(posts).then(function(data) {
         console.log(data);
-      //  data.vote_count += 1
+        //  data.vote_count += 1
         posts.vote_count = data.vote_count
         console.log("UP COUNT DATA(DB)", data);
         console.log("UP COUNT VOTE_COUNT (CLIENT)", posts.vote_count);
 
-      //  console.log("POST COUNT IN COMPONENT FUNCTION VOTE_COUNT plus one", posts.vote_count, data.vote_count);
+        //  console.log("POST COUNT IN COMPONENT FUNCTION VOTE_COUNT plus one", posts.vote_count, data.vote_count);
 
       })
     }
 
     vm.countVotesDown = function(posts) {
-      blogService.countVotesDown(posts).then(function(data){
+      blogService.countVotesDown(posts).then(function(data) {
         console.log(data);
         //data.vote_count -= 1
         posts.vote_count = data.vote_count
@@ -76,9 +85,9 @@
       })
     }
 
-    vm.createComment = function (posts, comment) {
+    vm.createComment = function(posts, comment) {
 
-      blogService.createCommentService(posts, comment).then(function(data){
+      blogService.createCommentService(posts, comment).then(function(data) {
         console.log("COMMENT DATA", data);
         posts.comments.push(data)
         delete posts.newComment

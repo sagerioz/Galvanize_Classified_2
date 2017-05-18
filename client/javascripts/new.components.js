@@ -2,9 +2,9 @@
   'use strict'
 
   angular.module('app')
-    .component('classifiedsedit', {
+    .component('classifiedsnew', {
       controller: controller,
-      templateUrl: '../views/classifieds/edit.html'
+      templateUrl: '../views/classifieds/new.html'
     })
 
   controller.$inject = ['ClassifiedsService', '$stateParams', '$state']
@@ -12,57 +12,30 @@
   function controller(ClassifiedsService, $stateParams, $state) {
     const vm = this
 
-    vm.editAd = editAd
-    //vm.createPost = createPost
+    vm.createAd = createAd
 
     vm.$onInit = function() {
-      console.log("STATEPARAMS", $stateParams.id);
-      ClassifiedsService.getAd($stateParams.id).then(function(data) {
-        vm.editObj = data
-
-      });
+      console.log("hi from the NEW controller onInit()");
     }
 
-    function editAd() {
-      ClassifiedsService.editPostService(vm.editObj).then(function(data) {
-      //  console.log("DATA after new Form", data);
-      //  console.log("COMMENTS in DATA?", data);
-      $state.go('home')
+    function createAd() {
+      console.log("hi from createAD()");
+      let tempObj = {
+        title: vm.postObj.title,
+        description: vm.postObj.description,
+        price: vm.postObj.price,
+        item_image: vm.postObj.item_image
+      }
+      ClassifiedsService.sendForm(vm.postObj).then(function(data) {
+         console.log("DATA after new ad is created", data);
+
+        vm.ClassifiedsDb.push(data)
+         console.log("new ad in DATA?", data);
+        delete vm.postObj;
+        $state.go('home')
       })
     }
-
-
-
-
     //
-    //
-    // function createPost() {
-    //   let tempObj = {
-    //     title: vm.postObj.title,
-    //     description: vm.postObj.description,
-    //     price: vm.postObj.price,
-    //     item_image: vm.postObj.item_image,
-    //     created_at: moment().calendar()
-    //   }
-    //   blogService.sendForm(tempObj).then(function(data) {
-        //  console.log("DATA after new Form", data);
-
-        // vm.blogDb.push(data)
-        //  console.log("COMMENTS in DATA?", data);
-    //     delete vm.postObj;
-    //     vm.toggleForm()
-    //   })
-    // }
-    // vm.deletePosts = function(posts) {
-    //   if (confirm("are you sure you want to delete this post?") === true) {
-    //     blogService.deletePost(posts).then(function() {
-    //       console.log("you deleted me");
-    //       vm.$onInit()
-    //     });
-    //   } else {
-    //     return;
-    //   }
-    // }
     //console.log("LINE 57");
     // vm.toggleComments = function(posts) {
     //   posts.commentsVisible = !posts.commentsVisible

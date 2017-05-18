@@ -1,4 +1,6 @@
-<h1>Here are all the ads and stuff to buy</h1>
+<div class="container">
+<h1>Here are the ads of stuff to buy</h1>
+<p><a class="btn btn-info" ui-sref="new">New Post</a>
 <div ng-repeat="ads in $ctrl.ClassifiedsDb">
 
 
@@ -10,7 +12,7 @@
 
 
 
-    <span class="glyphicon glyphicon-remove pull-right"></span>
+    <span class="glyphicon glyphicon-remove pull-right" ng-click="$ctrl.deleteAd(ads)"></span>
     <a ui-sref="edit({id: {{ads.id}}})">Edit</a>
     <a href="/edit/{{ads.id}}">
       <span class="glyphicon glyphicon-pencil pull-right"></span>
@@ -28,4 +30,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

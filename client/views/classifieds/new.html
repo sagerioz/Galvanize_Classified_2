@@ -1,13 +1,14 @@
-<!-- edit form -->
+<!-- new ad form -->
 <div class="container">
-<form name="$ctrl.editForm" novalidate class="form" ng-submit="$ctrl.editAd()" >
+  <h1>New ad for classifieds</h1>
+<form name="$ctrl.editForm" novalidate class="form" ng-submit="$ctrl.createAd()" >
 
        <!-- TITLE -->
        <div class="form-group" ng-class="{ 'has-error' : $ctrl.editForm.title.$invalid && !$ctrl.editForm.title.$pristine }">
            <label>Title</label>
            <input
            name="title"
-           ng-model="$ctrl.editObj.title"
+           ng-model="$ctrl.postObj.title"
            required
            minlength="1"
            type="text"
@@ -22,7 +23,7 @@
            <textarea
            name="description"
            required
-           ng-model="$ctrl.editObj.description"
+           ng-model="$ctrl.postObj.description"
            type="url"
            class="form-control"
            id="description"></textarea>
@@ -35,7 +36,7 @@
            <input
            name="price"
            required
-           ng-model="$ctrl.editObj.price"
+           ng-model="$ctrl.postObj.price"
            type="text"
            class="form-control"
            id="price">
@@ -48,14 +49,14 @@
             <input
             name="item_image"
             required
-            ng-model="$ctrl.editObj.item_image"
+            ng-model="$ctrl.postObj.item_image"
             type="text"
             class="form-control"
-            id="item_image"></textarea>
+            id="item_image">
             <p ng-show="$ctrl.editForm.item_image.$invalid && !$ctrl.editForm.item_image.$pristine" class="help-block">Please enter the item'simage url</p>
         </div>
 
-       <button type="submit" class="btn btn-primary">Update Ad</button>
+       <button type="submit" class="btn btn-primary">Create Ad</button>
        <a ui-sref="home">Cancel</a>
 
    </form>
